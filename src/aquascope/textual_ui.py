@@ -13,7 +13,9 @@ from textual import events
 from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.containers import Container, Horizontal, Vertical
+from textual.css.query import NoMatches
 from textual.screen import ModalScreen
+from textual.timer import Timer
 from textual.widgets import Label, ListItem, ListView, Static
 
 from . import __version__
@@ -930,6 +932,7 @@ class AquaScopeApp(App[None]):
         self.analysis: Analysis | None = None
         self.started_at = time.monotonic()
         self.message = ""
+        self._refresh_timer: Timer | None = None
 
     def compose(self) -> ComposeResult:
         yield Static(id="header")
@@ -957,10 +960,12 @@ class AquaScopeApp(App[None]):
                 self.demo = True
                 self.message = f"Audio unavailable; showing reference signal ({exc})"
         self._apply_layout()
-        self.set_interval(1.0 / self.fps, self._tick)
+        self._refresh_timer = self.set_interval(1.0 / self.fps, self._tick)
         self._tick()
 
     def on_unmount(self) -> None:
+        if self._refresh_timer is not None:
+            self._refresh_timer.stop()
         self.engine.close()
 
     def on_resize(self, event: events.Resize) -> None:
@@ -974,6 +979,14 @@ class AquaScopeApp(App[None]):
         self.screen.set_class(compact, "compact")
 
     def _tick(self) -> None:
+        try:
+            self._refresh()
+        except NoMatches:
+            # A last timer tick can land while the app is shutting down and its
+            # widgets are already gone; there is nothing left to draw.
+            return
+
+    def _refresh(self) -> None:
         if not self.paused:
             if self.demo:
                 frames = self._demo_frames()

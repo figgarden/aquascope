@@ -22,6 +22,10 @@ All notable changes to AquaScope are documented here. This project follows
 - `tools/render_preview.py` writes to `docs/` (or `$AQUASCOPE_PREVIEW_DIR`) and can render
   every mode, instead of a hard-coded path.
 
+### Fixed
+- A display refresh firing during shutdown could raise `NoMatches` on quit (seen on slow
+  machines); the refresh timer is now stopped on exit.
+
 ### Removed
 - The unused legacy curses interface (`tui.py`). The `curses` module doesn't exist on Windows,
   and the Textual UI fully replaced it.
