@@ -748,7 +748,7 @@ class HelpScreen(ModalScreen[None]):
                 "Q       Quit\n\n"
                 "SYSTEM = playback loopback\n"
                 "INPUT  = microphone / line\n\n"
-                "Created by Gabriel Moreno, N6OSB\n"
+                "Created by Gabriel Moreno\n"
                 "Assisted by Claude.ai Sonnet via Perplexity",
                 id="dialog-body",
             )

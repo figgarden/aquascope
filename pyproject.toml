@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE", "COPYRIGHT"]
-authors = [{ name = "Gabriel Moreno (N6OSB)" }]
+authors = [{ name = "Gabriel Moreno" }]
 keywords = ["oscilloscope", "spectrum-analyzer", "audio", "tui", "terminal", "textual", "fft"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",

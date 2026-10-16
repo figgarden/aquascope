@@ -35,7 +35,7 @@ def parser() -> argparse.ArgumentParser:
         action="version",
         version=(
             "AquaScope\n"
-            "Created by Gabriel Moreno, N6OSB\n"
+            "Created by Gabriel Moreno\n"
             "With assistance from Claude.ai Sonnet via Perplexity\n"
             "Licensed under GPL-3.0-or-later"
         ),

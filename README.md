@@ -218,14 +218,14 @@ measurements.
 
 ## License
 
-Copyright © 2026 Gabriel Moreno, N6OSB.
+Copyright © 2026 Gabriel Moreno.
 
 AquaScope is free software, licensed under the
 [GNU General Public License, version 3 or later](LICENSE).
 
 ## Credits
 
-- **Creator:** Gabriel Moreno, N6OSB
+- **Creator:** Gabriel Moreno
 - **AI assistance:** Claude.ai Sonnet via Perplexity, and Claude Code
 - Built with [Textual](https://github.com/Textualize/textual),
   [Rich](https://github.com/Textualize/rich), [NumPy](https://numpy.org/), and
