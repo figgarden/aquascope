@@ -1,0 +1,23 @@
+# Virtual environments
+osc_venv/
+.venv/
+venv/
+
+# Python build / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# OS / editor junk
+.DS_Store
+__MACOSX/
+Thumbs.db
+.idea/
+.vscode/
+
+# Local AquaScope previews (docs/*.png are committed on purpose)
+docs/*.svg

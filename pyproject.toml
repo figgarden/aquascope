@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aquascope-tui"
+version = "2.5.0"
+description = "A monochrome aqua oscilloscope and spectrum analyzer for your terminal"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE", "COPYRIGHT"]
+authors = [{ name = "Gabriel Moreno (N6OSB)" }]
+keywords = ["oscilloscope", "spectrum-analyzer", "audio", "tui", "terminal", "textual", "fft"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+dependencies = [
+  "numpy>=1.26",
+  "sounddevice>=0.5",
+  "textual>=8.2,<9",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.urls]
+Homepage = "https://github.com/figgarden/aquascope"
+Issues = "https://github.com/figgarden/aquascope/issues"
+Changelog = "https://github.com/figgarden/aquascope/blob/main/CHANGELOG.md"
+
+[project.scripts]
+aquascope = "aquascope.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aquascope"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/.github", "/docs/*.svg"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
